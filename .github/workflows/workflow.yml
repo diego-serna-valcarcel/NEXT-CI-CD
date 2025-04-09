@@ -52,7 +52,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/java-cicd-kata:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/next_cicd:latest .
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -61,7 +61,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/java-cicd-kata:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/next_cicd:latest
 
   deploy:
     needs: build
